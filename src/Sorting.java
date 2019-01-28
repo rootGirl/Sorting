@@ -1,5 +1,29 @@
 public class Sorting {
 
+    public void bubbleSort(int[] arr){
+        for(int i=0;i<arr.length;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i]>arr[j]){
+                    int temp = arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+    }
+
+    public void selectionSort(int[] arr){
+        for(int i=0;i<arr.length;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[j]<arr[i]){
+                    int temp = arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+    }
+
     public void quickSort(int[] arr, int start, int end){
         if(start>=end){
             return;
@@ -60,9 +84,11 @@ public class Sorting {
 
     public static void main (String[] args){
         Sorting sort = new Sorting();
-        int[] arr = {5,6,8,5,5,8,9,6,6,67,6,0};
- //       sort.mergeSort(arr);
-           sort.quickSort(arr, 0, arr.length-1);
+        int[] arr = {8,6,5};
+        //     sort.mergeSort(arr);
+        //    sort.quickSort(arr, 0, arr.length-1);
+        //     sort.bubbleSort(arr);
+        sort.selectionSort(arr);
         for(int i=0;i<arr.length;i++){
             System.out.println(arr[i]);
         }
