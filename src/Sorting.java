@@ -1,4 +1,24 @@
+import java.util.*;
 public class Sorting {
+
+    public void group(int[] arr){
+        HashMap<Integer,Integer> map = new HashMap();
+        for(int i=0;i<arr.length;i++){
+            if(!map.containsKey(arr[i])){
+                map.put(arr[i],1);
+            }else{
+                int count = map.get(arr[i]);
+                map.put(arr[i],++count);
+            }
+        }
+        int i=0;
+        for (Integer key : map.keySet()) {
+            for (int j = 0; j < map.get(key); j++) {
+                arr[i] = key;
+                i++;
+            }
+        }
+    }
 
     public void bubbleSort(int[] arr){
         for(int i=0;i<arr.length;i++){
@@ -84,11 +104,12 @@ public class Sorting {
 
     public static void main (String[] args){
         Sorting sort = new Sorting();
-        int[] arr = {8,6,5};
+        int[] arr = {3,4,4,5,5,5,6,6,6,2,3,4,5,6,7};
         //     sort.mergeSort(arr);
         //    sort.quickSort(arr, 0, arr.length-1);
         //     sort.bubbleSort(arr);
         sort.selectionSort(arr);
+        sort.group(arr);
         for(int i=0;i<arr.length;i++){
             System.out.println(arr[i]);
         }
